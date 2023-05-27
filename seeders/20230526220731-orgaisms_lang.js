@@ -1,0 +1,31 @@
+'use strict';
+
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.bulkInsert('organism_langs', [{
+      title: 'Rose',
+      main_ID: 1,
+      lang: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      title: 'Roza',
+      main_ID: 1,
+      lang: 2,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }, {
+      title: 'Roza',
+      main_ID: 1,
+      lang: 3,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },], {});
+  },
+
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('organism_langs', null, {});
+
+  }
+};

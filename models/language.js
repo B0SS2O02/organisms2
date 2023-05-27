@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Kindoms extends Model {
+  class language extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,13 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Kindoms.init({
-    name: DataTypes.STRING,
-    img: DataTypes.STRING,
-    body: DataTypes.TEXT
+  language.init({
+    title: DataTypes.STRING,
+    img: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Kindoms',
+    modelName: 'language',
   });
-  return Kindoms;
+  return language;
 };

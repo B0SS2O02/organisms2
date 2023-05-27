@@ -1,0 +1,12 @@
+<div class="navigation">
+    <div class="title">
+        Main
+    </div>
+    <div class="List">
+        <% for(var i=0; i < navlist.length; i++) { %>
+            <div class="ListElement" value="<%=navlist[i].link %>">
+                <%= navlist[i].title %>
+            </div>
+            <% } %>
+    </div>
+</div>
