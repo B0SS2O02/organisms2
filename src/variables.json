@@ -1,12 +1,20 @@
 {
     "navlist": [
         {
+            "title": "Kindoms",
+            "link": "/admin/kindom"
+        },
+        {
             "title": "Categories",
             "link": "/admin/category"
         },
         {
             "title": "Organism",
             "link": "/admin/organism"
+        },
+        {
+            "title": "Language",
+            "link": "/admin/language/"
         }
     ]
 }

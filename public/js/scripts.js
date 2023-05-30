@@ -51,6 +51,8 @@ const Link = (id) => {
     document.location.pathname = `${document.location.pathname}/view/${id}`
 }
 
+
+
 const edit = () => {
     let path = document.location.pathname.split('/')
     path[path.length - 2] = 'edit'
@@ -82,14 +84,47 @@ const view = () => {
     document.location.pathname = url
 }
 
+const Main = () => {
+    let path = document.location.pathname.split('/')
+    let url = ''
+    for (let i = 0; i < path.length - 1; i++) {
+        if (i != 0) {
+            url = url + '/' + path[i]
+        } else {
+            url = path[i]
+        }
+    }
+    document.location.pathname = url
+}
+
+const Perenaprovleniye = () => {
+    let path = document.location.pathname.split('/')
+    if (path[path.length - 1] != 'create') {
+        view()
+    } else {
+        Main()
+    }
+}
+
 const del = async () => {
+    console.log(document.location.pathname.split('/'))
     if (confirm('You are have delete?')) {
         let id = document.location.pathname.split('/')
         let path = id[id.length - 3]
         id = id[id.length - 1]
-        const result = await fetch(`${document.location.origin}/admin/${path}/delete/${id}`,{
-           method:'POST'
+        const result = await fetch(`${document.location.origin}/admin/${path}/delete/${id}`, {
+            method: 'POST'
         })
+        let path2 = document.location.pathname.split('/')
+        let url = ''
+        for (let i = 0; i < path2.length - 2; i++) {
+            if (i != 0) {
+                url = url + '/' + path2[i]
+            } else {
+                url = path2[i]
+            }
+        }
+        document.location.pathname = url
     }
 
 }

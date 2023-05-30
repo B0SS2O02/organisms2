@@ -1,0 +1,30 @@
+<div class="ListContent">
+    <h2>language</h2>
+    <table>
+        <tr class="tableHead">
+            <th>
+                ID
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Image
+            </th>
+        </tr>
+        <% for(let row=0 ;row< list.length;row++){%>
+            <tr onclick="Link('<%= list[row].id %>')">
+                <td>
+                    <%= list[row].id %>
+                </td>
+                <td>
+                    <%= list[row].title %>
+                </td>
+                <td>
+                    <img class="image" src="/<%= list[row].img %>">
+                </td>
+            </tr>
+            <%}%>
+    </table>
+    <%- include('pagination',{page:page,lastPage:lastPage}) %>
+</div>

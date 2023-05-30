@@ -1,3 +1,6 @@
+body{
+     font-family: Verdana, sans-serif;
+}
 .case {
     display: flex;
     flex-direction: row;
@@ -66,8 +69,9 @@
 body {
     margin: 0;
 }
-.creatForm{
-    
+
+.creatForm {
+
     width: 100%;
     overflow-y: scroll;
 
@@ -207,7 +211,8 @@ table {
     margin: 10px;
 
 }
-.categorySelect{
+
+.categorySelect {
     display: flex;
     font-size: 24px;
     padding: 13px;
@@ -218,15 +223,42 @@ table {
     align-content: flex-start;
 }
 
-input{
-    width: 100%;
-    height: 100%;
-    font-size: 15px;
-    font-family: Verdana, sans-serif;   
-}
-textarea    {
+input {
     width: 100%;
     height: 100%;
     font-size: 15px;
     font-family: Verdana, sans-serif;
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    font-family: Verdana, sans-serif;
+}
+
+.countCase {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+}
+
+.countContent {
+    margin: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    background: #c3ced8;
+}
+
+.element {
+    margin: 0 10px;
 }

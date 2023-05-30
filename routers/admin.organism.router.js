@@ -33,4 +33,6 @@ router.get('/edit/:id', Organism.categoryEditGet)
 
 router.post('/edit', upload.single('image'), Organism.categoryEditPut)
 
+router.post('/delete/:id', Organism.del)
+
 module.exports = router

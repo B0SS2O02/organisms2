@@ -10,7 +10,7 @@ form.onsubmit = async (e) => {
     }).catch((err) => {
         console.log(err)
     }).then(()=>{
-        pathBack()
+        Perenaprovleniye()
     })
     console.log(await response.json())
 }

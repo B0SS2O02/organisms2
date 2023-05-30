@@ -1,0 +1,30 @@
+<div class="countCase">
+
+    <%for(let i=0;i< count.length;i++){%>
+        <div class="countContent">
+            <div class="element">
+                <%=Object.keys(count[i])[0] %>
+            </div>
+            <div class="element">
+                <%= count[i][Object.keys(count[i])[0]] %>
+
+            </div>
+
+        </div>
+
+
+
+        <%}%>
+            <script>
+                const Caplitailts = (word) => {
+                    return word[0].toUpperCase() + word.slice(1)
+                }
+                let elements = document.getElementsByClassName('element')
+                for (let i = 0; i < elements.length; i++) {
+                    if (!parseInt(elements[i].innerText)) {
+                        elements[i].innerText = `${Caplitailts(elements[i].innerText)} count`
+                    }
+
+                }
+            </script>
+</div>

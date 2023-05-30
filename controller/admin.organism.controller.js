@@ -1,4 +1,4 @@
-const models = require('../models')
+ const models = require('../models')
 const { navlist } = require('../src/variables.json')
 
 exports.categoryAddGet = async (req, res) => {
@@ -83,14 +83,14 @@ exports.categoryAddPost = async (req, res) => {
     })
     let info = {}
     for (const key in req.body) {
-        if (key != 'kindom') {
-
+        if (key != 'category') {
             if (!info[key.split('-')[0]]) {
                 info[key.split('-')[0]] = {}
             }
             info[key.split('-')[0]][key.split('-')[1]] = req.body[key]
         }
     }
+    console.log(info)
     for (const i in info) {
         await models.organism_lang.create({
             main_ID: category.id,
@@ -144,7 +144,7 @@ exports.categoryView = async (req, res) => {
         }]
     })
     let data = JSON.stringify(category)
-    res.render('categoryView.ejs', {
+    res.render('organismsView.ejs', {
         navlist: navlist,
         data: JSON.parse(data)
     })
@@ -179,10 +179,10 @@ exports.categoryEditGet = async (req, res) => {
             }]
         }]
     })
-    let select = JSON.stringify(await models.organism.findAll({
+    let select = JSON.stringify(await models.category.findAll({
         attributes: ['id'],
         include: [{
-            model: models.organism_lang,
+            model: models.category_lang,
             attributes: ['title'],
             where: {
                 lang: langs[0].id
@@ -195,27 +195,28 @@ exports.categoryEditGet = async (req, res) => {
         navlist: navlist,
         data: JSON.parse(data),
         select: JSON.parse(select),
-        link: '/admin/category/edit',
+        link: '/admin/organism/edit',
         method: 'POST'
     })
 }
 
 exports.categoryEditPut = async (req, res) => {
+    console.log(req.body)
     let body = {}
     if (!!req.file) {
         body['img'] = req.file.path
     }
-    body['kindom_ID'] = req.body.kindom
-    await models.category.update(body, {
+    body['category_ID'] = req.body.organism
+    await models.organism.update(body, {
         where: {
             id: req.body.id
         }
     })
     for (const key in req.body) {
-        if (key != 'id' && key != 'kindom') {
+        if (key != 'id' && key != 'organism') {
             let data = {}
             data[key.split('-')[2]] = req.body[key]
-            await models.category_lang.update(data, {
+            await models.organism_lang.update(data, {
                 where: {
                     id: key.split('-')[0]
                 }
@@ -224,4 +225,14 @@ exports.categoryEditPut = async (req, res) => {
     }
 
     res.json({})
+}
+
+exports.del = async (req, res) => {
+    console.log(req.params.id)
+    const result = await models.organism.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    res.send('ok')
 }
