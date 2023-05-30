@@ -126,5 +126,8 @@ const del = async () => {
         }
         document.location.pathname = url
     }
+}
 
+const MainPage=()=>{
+    document.location.pathname='/admin'
 }

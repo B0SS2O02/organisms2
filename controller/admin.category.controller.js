@@ -1,7 +1,7 @@
 const models = require('../models')
 const { navlist } = require('../src/variables.json')
 
-exports.categoryAddGet = async (req, res) => {
+exports.Create_View = async (req, res) => {
     const language = req.query.lang || 1
     const langs = await models.language.findAll({
         attributes: ['id', 'title']
@@ -60,7 +60,8 @@ exports.categoryAddGet = async (req, res) => {
             formelements.push(element)
         }
     }
-    res.render('categoryAdd', {
+    res.render('Category', {
+        PageType: 'create',
         navlist: navlist,
         formelements: formelements,
         link: '/admin/category',
@@ -68,7 +69,7 @@ exports.categoryAddGet = async (req, res) => {
     })
 }
 
-exports.categoryAddPost = async (req, res) => {
+exports.Create = async (req, res) => {
     const langs = await models.language.findAll({
         attributes: ['id', 'title']
     })
@@ -102,7 +103,7 @@ exports.categoryAddPost = async (req, res) => {
     res.json({})
 }
 
-exports.categoryList = async (req, res) => {
+exports.List = async (req, res) => {
     const page = req.query.page - 1 || 0
     const count = req.query.count || 10
     const category = await models.category.findAll({
@@ -119,7 +120,8 @@ exports.categoryList = async (req, res) => {
         limit: count
     })
     const lastPage = await models.category.count()
-    res.render('category', {
+    res.render('Category', {
+        PageType: 'list',
         navlist: navlist,
         list: category,
         page: page + 1,
@@ -127,7 +129,7 @@ exports.categoryList = async (req, res) => {
     })
 }
 
-exports.categoryView = async (req, res) => {
+exports.View = async (req, res) => {
     const id = req.params.id
     const category = await models.category.findOne({
         where: {
@@ -145,13 +147,14 @@ exports.categoryView = async (req, res) => {
     })
     console.log(category)
     let data = JSON.stringify(category)
-    res.render('categoryView.ejs', {
+    res.render('Category', {
+        PageType: 'view',
         navlist: navlist,
         data: JSON.parse(data)
     })
 }
 
-exports.categoryEditGet = async (req, res) => {
+exports.Edit_View = async (req, res) => {
     const id = req.params.id
     const langs = await models.language.findAll({
         attributes: ['id', 'title']
@@ -192,7 +195,8 @@ exports.categoryEditGet = async (req, res) => {
     }))
     let data = JSON.stringify(category)
 
-    res.render('categoryEdit', {
+    res.render('Category', {
+        PageType: 'edit',
         navlist: navlist,
         data: JSON.parse(data),
         select: JSON.parse(select),
@@ -201,7 +205,7 @@ exports.categoryEditGet = async (req, res) => {
     })
 }
 
-exports.categoryEditPut = async (req, res) => {
+exports.Edit = async (req, res) => {
     let body = {}
     if (!!req.file) {
         body['img'] = req.file.path
@@ -226,7 +230,7 @@ exports.categoryEditPut = async (req, res) => {
     res.json({})
 }
 
-exports.del = async (req, res) => {
+exports.Delete = async (req, res) => {
     console.log(req.params.id)
     const result = await models.category.destroy({
         where: {

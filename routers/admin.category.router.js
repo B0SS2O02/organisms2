@@ -21,18 +21,18 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage: storageConfig, fileFilter: fileFilter })
 
-router.get('/create', Category.categoryAddGet)
+router.get('/create', Category.Create_View)
 
-router.post('/', upload.single('img'), Category.categoryAddPost)
+router.post('/', upload.single('img'), Category.Create)
 
-router.get('/', Category.categoryList)
+router.get('/', Category.List)
 
-router.get('/view/:id', Category.categoryView)
+router.get('/view/:id', Category.View)
 
-router.get('/edit/:id', Category.categoryEditGet)
+router.get('/edit/:id', Category.Edit_View)
 
-router.post('/edit', upload.single('image'), Category.categoryEditPut)
+router.post('/edit', upload.single('image'), Category.Edit)
 
-router.post('/delete/:id', Category.del)
+router.post('/delete/:id', Category.Delete)
 
 module.exports = router
