@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       organism.belongsTo(models.category, {
-        foreignKey: 'category_ID'
+        foreignKey: 'category_ID',
+        onDelete: 'CASCADE',
+        onUpdate: "no action"
       })
       models.category.hasMany(organism, {
         foreignKey: 'category_ID'

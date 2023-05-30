@@ -1,0 +1,38 @@
+<div class="ListContent">
+    <div>
+        <button onclick="create()">Create</button>
+    </div>
+    <table>
+        <tr class="tableHead">
+            <th>
+                ID
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+        <% for(let row=0 ;row< list.length;row++){%>
+            <tr onclick="Link('<%= list[row].id %>')">
+                <td>
+                    <%= list[row].id %>
+                </td>
+                <td>
+                    <img class="image" src="/<%= list[row].img %>">
+                </td>
+                <td>
+                    <%= list[row].category_langs[0].title %>
+                </td>
+                <td>
+                    <%= list[row].category_langs[0].body %>
+                </td>
+            </tr>
+            <%}%>
+    </table>
+    <%- include('pagination',{page:page,lastPage:lastPage}) %>
+</div>

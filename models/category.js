@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       category.belongsTo(models.kindom, {
-        foreignKey: 'kindom_ID'
+        foreignKey: 'kindom_ID',
+        onDelete: 'CASCADE',
+        onUpdate: "no action"
       })
       models.kindom.hasMany(category, {
         foreignKey: 'kindom_ID'

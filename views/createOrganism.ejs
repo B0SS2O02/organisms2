@@ -1,0 +1,47 @@
+<div class="creatForm">
+
+    <form action="<%= link %>" method="<%= method %>">
+        <div class="formContent">
+
+
+            <% for(let i=0;i< formelements.length;i++ ){%>
+                <% if (formelements[i].type=="textarea" ){ %>
+
+                    <div class="formElement">
+                        <%= formelements[i].title %>
+                            <textarea class="elements" required name="<%= formelements[i].name %>" id="" cols="30"
+                                rows="10"></textarea>
+                    </div>
+
+                    <% }else if(formelements[i].type=="file" ){ %>
+                        <div class="formElement">
+                            <%= formelements[i].title %>
+                                <input class="elements" accept=".png,.jpg,.jpeg,.gif" required
+                                    name="<%= formelements[i].name %>" type='<%= formelements[i].type %>' />
+                        </div>
+                        <%} else if(formelements[i].type=="select" ) {%>
+                            <div class="formElement">
+                                <%= formelements[i].title %>
+                                    <select required     class="elements" name="<%= formelements[i].name %>">
+                                        <option selected="selected"></option>
+                                        <% for(let j=0;j< formelements[i].options.length;j++){ %>
+                                            <option value="<%= formelements[i].options[j].id %>">
+                                                <%= formelements[i].options[j].category_langs[0].title %>
+                                                
+                                            </option>
+                                            <%}%>
+                                    </select>
+                            </div>
+                            <% }else{ %>
+                                <div class="formElement">
+                                    <%= formelements[i].title %>
+                                        <input class="elements" required name="<%= formelements[i].name %>"
+                                            type='<%= formelements[i].type %>' />
+                                </div>
+
+                                <% }} %>
+
+                                    <button type="submit">Send</button>
+        </div>
+        </from>
+</div>

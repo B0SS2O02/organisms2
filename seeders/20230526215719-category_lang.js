@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('category_lang', [{
+    await queryInterface.bulkInsert('category_langs', [{
       title: 'flowers',
       main_ID: 1,
       body: 'wretytuuigdfhjklkbvnm,1',
@@ -28,6 +28,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('category_lang', null, {});
+    await queryInterface.bulkDelete('category_langs', null, {});
   }
 };

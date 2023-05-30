@@ -3,8 +3,8 @@
         Main
     </div>
     <div class="List">
-        <% for(var i=0; i < navlist.length; i++) { %>
-            <div class="ListElement" value="<%=navlist[i].link %>">
+        <% for(let i=0; i < navlist.length; i++) { %>
+            <div class="ListElement" onclick="redirect('<%=navlist[i].link  %>')" value="<%=navlist[i].link %>">
                 <%= navlist[i].title %>
             </div>
             <% } %>

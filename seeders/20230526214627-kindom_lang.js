@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('kindom_lang', [{
+    await queryInterface.bulkInsert('kindom_langs', [{
       title: 'Plants',
       main_ID: 1,
       body:'wretytuuigdfhjklkbvnm,1',
@@ -28,6 +28,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('kindom_lang', null, {});
+    await queryInterface.bulkDelete('kindom_langs', null, {});
   }
 };

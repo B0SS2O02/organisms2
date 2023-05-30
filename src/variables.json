@@ -1,0 +1,12 @@
+{
+    "navlist": [
+        {
+            "title": "Categories",
+            "link": "/admin/category"
+        },
+        {
+            "title": "Organism",
+            "link": "/admin/organism"
+        }
+    ]
+}

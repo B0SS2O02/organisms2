@@ -12,18 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       kindom_lang.belongsTo(models.kindom, {
-        foreignKey: 'main_ID'
+        foreignKey: 'main_ID',
+        onDelete:"CASCADE"
       })
       models.kindom.hasMany(kindom_lang, {
         foreignKey: 'main_ID'
       })
       kindom_lang.belongsTo(models.language, {
-        foreignKey: 'lang'
+        foreignKey: 'lang',
+        onDelete:"CASCADE"
       })
       models.language.hasMany(kindom_lang, {
-        foreignKey: 'lang'
-      })
-      kindom_lang.hasMany(models.language, {
         foreignKey: 'lang'
       })
     }

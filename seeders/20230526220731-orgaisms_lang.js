@@ -7,18 +7,21 @@ module.exports = {
       title: 'Rose',
       main_ID: 1,
       lang: 1,
+      body:'sdfgfhj quwfuhi uhwoiu',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       title: 'Roza',
       main_ID: 1,
       lang: 2,
+      body:'sdfgfhj quwfuhi uhwoiu',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       title: 'Roza',
       main_ID: 1,
       lang: 3,
+      body:'sdfgfhj quwfuhi uhwoiu',
       createdAt: new Date(),
       updatedAt: new Date()
     },], {});
