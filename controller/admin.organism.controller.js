@@ -1,5 +1,6 @@
 const models = require('../models')
 const { navlist } = require('../src/variables.json')
+const fs = require('fs')
 
 exports.organismAddGet = async (req, res) => {
     const language = req.query.lang || 1
@@ -193,7 +194,7 @@ exports.organismEditGet = async (req, res) => {
         }]
     }))
     let data = JSON.stringify(category)
-    
+
     res.render('Organism', {
         PageType: 'edit',
         navlist: navlist,
@@ -207,8 +208,19 @@ exports.organismEditGet = async (req, res) => {
 exports.organismEditPut = async (req, res) => {
     console.log(req.body)
     let body = {}
+    const dataOld = await models.organism.findOne({
+        where: {
+            id: req.body.id
+        }
+    })
     if (!!req.file) {
         body['img'] = req.file.path
+        try {
+            fs.unlinkSync(dataOld.img);
+            console.log(`successfully deleted ${dataOld.img}`);
+        } catch (err) {
+            console.log(err)
+        }
     }
     body['category_ID'] = req.body.organism
     await models.organism.update(body, {
@@ -233,6 +245,19 @@ exports.organismEditPut = async (req, res) => {
 
 exports.del = async (req, res) => {
     console.log(req.params.id)
+    const dataOld = models.organism.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    if (!!req.file) {
+        try {
+            fs.unlinkSync(dataOld.img);
+            console.log(`successfully deleted ${dataOld.img}`);
+        } catch (err) {
+            console.log(err)
+        }
+    }
     const result = await models.organism.destroy({
         where: {
             id: req.params.id

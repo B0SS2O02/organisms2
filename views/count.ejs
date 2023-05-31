@@ -2,12 +2,11 @@
 
     <%for(let i=0;i< count.length;i++){%>
         <div class="countContent">
-            <div class="element">
+            <div class="counTelement">
                 <%=Object.keys(count[i])[0] %>
             </div>
-            <div class="element">
+            <div class="counTelement elementColor">
                 <%= count[i][Object.keys(count[i])[0]] %>
-
             </div>
 
         </div>
@@ -19,10 +18,10 @@
                 const Caplitailts = (word) => {
                     return word[0].toUpperCase() + word.slice(1)
                 }
-                let elements = document.getElementsByClassName('element')
+                let elements = document.getElementsByClassName('counTelement')
                 for (let i = 0; i < elements.length; i++) {
                     if (!parseInt(elements[i].innerText)) {
-                        elements[i].innerText = `${Caplitailts(elements[i].innerText)} count`
+                        elements[i].innerText = `${Caplitailts(elements[i].innerText)} count:`
                     }
 
                 }

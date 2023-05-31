@@ -283,6 +283,34 @@ body {
 
 /* --------- */
 
-textarea{
+textarea {
     font-family: Verdana, sans-serif;
+}
+
+.countCase {
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: stretch;
+
+}
+
+.countContent {
+    margin: 20px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-around;
+    background: #3f424b;
+    color: silver;
+    border-radius: 8px;
+}
+
+.counTelement {
+    margin: 5 10 5 10;
+    font-size: 25;
+}
+.elementColor{
+    color: #ede5a9;
 }

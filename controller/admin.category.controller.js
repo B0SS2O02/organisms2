@@ -207,8 +207,20 @@ exports.Edit_View = async (req, res) => {
 
 exports.Edit = async (req, res) => {
     let body = {}
+    const dataOld = await models.organism.findOne({
+        where: {
+            id: req.body.id
+        }
+    })
     if (!!req.file) {
         body['img'] = req.file.path
+        try {
+            fs.unlinkSync(dataOld.img);
+            console.log(`successfully deleted ${dataOld.img}`);
+        } catch (err) {
+            console.log(err)
+        }
+
     }
     body['kindom_ID'] = req.body.kindom
     await models.category.update(body, {
@@ -232,6 +244,19 @@ exports.Edit = async (req, res) => {
 
 exports.Delete = async (req, res) => {
     console.log(req.params.id)
+    const dataOld = models.category.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    if (!!req.file) {
+        try {
+            fs.unlinkSync(dataOld.img);
+            console.log(`successfully deleted ${dataOld.img}`);
+        } catch (err) {
+            console.log(err)
+        }
+    }
     const result = await models.category.destroy({
         where: {
             id: req.params.id

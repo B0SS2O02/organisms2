@@ -30,7 +30,7 @@ exports.view = async (req, res) => {
     })
     let data = JSON.stringify(language)
     res.render('language', {
-        PageType:'view',
+        PageType: 'view',
         navlist: navlist,
         data: JSON.parse(data)
     })
@@ -47,7 +47,7 @@ exports.editView = async (req, res) => {
     let data = JSON.stringify(category)
 
     res.render('language', {
-        PageType:'edit',
+        PageType: 'edit',
         navlist: navlist,
         data: JSON.parse(data),
         link: '/admin/language/edit',
@@ -58,8 +58,19 @@ exports.editView = async (req, res) => {
 exports.editPost = async (req, res) => {
     console.log(req.body, req.file)
     let body = {}
+    const dataOld = await models.organism.findOne({
+        where: {
+            id: req.body.id
+        }
+    })
     if (!!req.file) {
         body['img'] = req.file.path
+        try {
+            fs.unlinkSync(dataOld.img);
+            console.log(`successfully deleted ${dataOld.img}`);
+        } catch (err) {
+            console.log(err)
+        }
     }
     body['title'] = req.body.title
     await models.language.update(body, {

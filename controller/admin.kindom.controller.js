@@ -83,10 +83,20 @@ exports.editView = async (req, res) => {
 }
 
 exports.editPost = async (req, res) => {
-    console.log('------------------', req.body)
     let body = {}
+    const dataOld = await models.organism.findOne({
+        where: {
+            id: req.body.id
+        }
+    })
     if (!!req.file) {
         body['img'] = req.file.path
+        try {
+            fs.unlinkSync(dataOld.img);
+            console.log(`successfully deleted ${dataOld.img}`);
+        } catch (err) {
+            console.log(err)
+        }
     }
     await models.kindom.update(body, {
         where: {
