@@ -1,5 +1,7 @@
 const redirect = (url) => {
+   
     document.location.pathname = url
+    
 }
 
 const pathBack = () => {

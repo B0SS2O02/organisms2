@@ -20,6 +20,7 @@ exports.list = async (req, res) => {
         limit: count
     })
     const Count = await models.category.count()
+
     res.json({
         organisms: Category,
         pages: Math.ceil(Count / count)
@@ -27,8 +28,12 @@ exports.list = async (req, res) => {
 }
 
 exports.view = async (req, res) => {
+
     const Category = await models.category.findOne({
         attributes: ['id', 'img',],
+        where: {
+            id: req.params.id
+        },
         include: [{
             model: models.category_lang,
             attributes: ['title', 'body'],
@@ -49,5 +54,6 @@ exports.view = async (req, res) => {
             }]
         }]
     })
+    console.log(Category, "----------------");
     res.json(Category)
 }

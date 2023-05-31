@@ -1,7 +1,7 @@
- const models = require('../models')
+const models = require('../models')
 const { navlist } = require('../src/variables.json')
 
-exports.categoryAddGet = async (req, res) => {
+exports.organismAddGet = async (req, res) => {
     const language = req.query.lang || 1
     const langs = await models.language.findAll({
         attributes: ['id', 'title']
@@ -60,7 +60,8 @@ exports.categoryAddGet = async (req, res) => {
             formelements.push(element)
         }
     }
-    res.render('organismAdd', {
+    res.render('Organism', {
+        PageType: 'create',
         navlist: navlist,
         formelements: formelements,
         link: '/admin/organism',
@@ -68,7 +69,7 @@ exports.categoryAddGet = async (req, res) => {
     })
 }
 
-exports.categoryAddPost = async (req, res) => {
+exports.organismAddPost = async (req, res) => {
     const langs = await models.language.findAll({
         attributes: ['id', 'title']
     })
@@ -120,6 +121,7 @@ exports.organismList = async (req, res) => {
     })
     const lastPage = await models.organism.count()
     res.render('organism', {
+        PageType: 'list',
         navlist: navlist,
         list: category,
         page: page + 1,
@@ -127,7 +129,7 @@ exports.organismList = async (req, res) => {
     })
 }
 
-exports.categoryView = async (req, res) => {
+exports.organismView = async (req, res) => {
     const id = req.params.id
     const category = await models.organism.findOne({
         where: {
@@ -144,13 +146,14 @@ exports.categoryView = async (req, res) => {
         }]
     })
     let data = JSON.stringify(category)
-    res.render('organismsView.ejs', {
+    res.render('Organism', {
+        PageType: 'view',
         navlist: navlist,
         data: JSON.parse(data)
     })
 }
 
-exports.categoryEditGet = async (req, res) => {
+exports.organismEditGet = async (req, res) => {
     const id = req.params.id
     const langs = await models.language.findAll({
         attributes: ['id', 'title']
@@ -190,8 +193,9 @@ exports.categoryEditGet = async (req, res) => {
         }]
     }))
     let data = JSON.stringify(category)
-
-    res.render('organismEdit', {
+    
+    res.render('Organism', {
+        PageType: 'edit',
         navlist: navlist,
         data: JSON.parse(data),
         select: JSON.parse(select),
@@ -200,7 +204,7 @@ exports.categoryEditGet = async (req, res) => {
     })
 }
 
-exports.categoryEditPut = async (req, res) => {
+exports.organismEditPut = async (req, res) => {
     console.log(req.body)
     let body = {}
     if (!!req.file) {

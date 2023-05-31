@@ -1,30 +1,35 @@
 <div class="ListContent">
-    <h2>language</h2>
-    <table>
-        <tr class="tableHead">
-            <th>
+
+
+
+    <div class="table">
+        <div class="CreateButtonCase">
+            <div class="CreateButton" onclick="create()">Create</div>
+        </div>
+        <div class="tr trHead">
+            <div class="th id">
                 ID
-            </th>
-            <th>
-                Title
-            </th>
-            <th>
+            </div>
+            <div class="th image">
                 Image
-            </th>
-        </tr>
+            </div>
+            <div class="th title">
+                Title
+            </div>
+        </div>
         <% for(let row=0 ;row< list.length;row++){%>
-            <tr onclick="Link('<%= list[row].id %>')">
-                <td>
+            <div onclick="Link('<%= list[row].id %>')" class="tr <% if(row%2) { %>trBlack <%}%> ">
+                <div class="td id <% if(!row%2) { %>tdWhite <%}%>">
                     <%= list[row].id %>
-                </td>
-                <td>
+                </div>
+                <div class="td image <% if(row%2) { %>tdtrBlack <%}else{%>  tdBlack <%}%>">
+                    <img class="ListImage" src="/<%= list[row].img %>">
+                </div>
+                <div class="td title <% if(!row%2) { %>tdWhite <%}%>"">
                     <%= list[row].title %>
-                </td>
-                <td>
-                    <img class="image" src="/<%= list[row].img %>">
-                </td>
-            </tr>
+                </div>
+            </div>
             <%}%>
-    </table>
+    </div>
     <%- include('pagination',{page:page,lastPage:lastPage}) %>
 </div>

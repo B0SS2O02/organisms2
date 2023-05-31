@@ -2,15 +2,32 @@
 
 <head>
     <link rel="stylesheet" href="/public/css/style.css">
-
 </head>
 
 <body>
     <div class="case">
-        <%- include('SIdeNavigation'); %>
-            <%- include('Organismlist',{list:list})%>
+        <%- include('SideNavigation'); %>
+            <div class="ContentCase">
+                <div class="Header">
+                    Category
+                </div>
+                <div class="Content">
+                    <% if(PageType=='create' ){%>
+                        <%- include('OrganismCreate',{formelements:formelements,link:link,method:method}); %>
+                            <%}else if(PageType=='list' ){ %>
+                                <%- include('Organismlist',{list:list})%>
+                                    <% }else if(PageType=='view' ){%>
+                                        <%- include('View',{data:data}) ;%>
+                                            <% }else if(PageType=='edit' ){%>
+                                                <%-
+                                                    include('Organismedit',{data:data,link:link,method:method,select:select})%>
+                                                    <%}%>
+                </div>
+            </div>
+
     </div>
 </body>
 <script src="/public/js/scripts.js"></script>
+<script src="/public/js/fetch.js"></script>
 
 </html>

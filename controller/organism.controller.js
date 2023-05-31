@@ -28,7 +28,10 @@ exports.list = async (req, res) => {
 
 exports.view = async (req, res) => {
     const Organism = await models.organism.findOne({
-        attributes: ['id', 'img',],
+        attributes: ['id', 'img'],
+        where: {
+            id: req.params.id
+        },
         include: [{
             model: models.organism_lang,
             attributes: ['title', 'body'],
@@ -36,17 +39,6 @@ exports.view = async (req, res) => {
                 model: models.language,
                 attributes: ['id', 'title']
             }
-        }, {
-            model: models.category,
-            attributes: ['id', 'img'],
-            include: [{
-                model: models.category_lang,
-                attributes: ['title'],
-                include: [{
-                    model: models.language,
-                    attributes:['id','title']
-                }]
-            }]
         }]
     })
     res.json(Organism)

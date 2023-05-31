@@ -5,12 +5,13 @@ exports.list = async (req, res) => {
     const page = req.query.page - 1 || 0
     const count = req.query.count || 10
     const language = await models.language.findAll({
-        attributes: ['id', 'title','img'],
+        attributes: ['id', 'title', 'img'],
         offset: page * count,
         limit: count
     })
     const lastPage = await models.language.count()
     res.render('language', {
+        PageType: 'list',
         navlist: navlist,
         list: language,
         page: page + 1,
@@ -28,7 +29,8 @@ exports.view = async (req, res) => {
 
     })
     let data = JSON.stringify(language)
-    res.render('LanguageView', {
+    res.render('language', {
+        PageType:'view',
         navlist: navlist,
         data: JSON.parse(data)
     })
@@ -44,7 +46,8 @@ exports.editView = async (req, res) => {
     })
     let data = JSON.stringify(category)
 
-    res.render('LanguageEdit', {
+    res.render('language', {
+        PageType:'edit',
         navlist: navlist,
         data: JSON.parse(data),
         link: '/admin/language/edit',

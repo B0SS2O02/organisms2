@@ -1,17 +1,58 @@
-<html>
+<div class="viewContent">
+    
+    <div class="table">
+        <div class="OptionButtonCase">
+            <div class="OptionButton" onclick="edit()">Edit</div>
+            <div class="OptionButton" onclick="del()">Delete</div>
+        </div>
+        <% let number=0 %>
+            <% for(let key in data){%>
+                <% if(typeof(data[key])=='object' ){%>
+                    <% for(let i=0;i< data[key].length;i++){%>
+                        <% for(const d in data[key][i]){%>
+                            <% if(d!='id' && d!='language' ){%>
+                                <div class="tr <% if(number%2) { %>trBlack <%}%>">
+                                    <div class="td firstColumn <% if(number%2) { %>viewTdBlack <%}else{%>  tdBlack <%}%>"">
+                                        <%=data[key][i].language.title %>
+                                            <%= d %>
+                                    </div>
+                                    <div class="td secondColumn">
+                                        <%= data[key][i][d]%>
+                                    </div>
+                                </div>
+                                <% number+=1 %>
+                                    <% }%>
+                                        <% }%>
 
-<head>
-    <title>Home Page</title>
-    <link rel="stylesheet" href="/public/css/style.css">
+                                            <% }%>
+                                                <% }else{%>
+                                                    <% if(key=='img' ){%>
+                                                        <div class="tr <% if(number%2) { %>trBlack <%}%>">
+                                                            <div class="td firstColumn <% if(number%2) { %>viewTdBlack <%}else{%>  tdBlack <%}%>"">
+                                                                Image
+                                                            </div>
+                                                            <div class="td secondColumn">
+                                                                <img class="viewimage" src="/<%= data[key] %>">
 
-</head>
+                                                            </div>
+                                                        </div>
+                                                        <% number+=1 %>
+                                                            <% }else{%>
+                                                                <div class="tr <% if(number%2) { %>trBlack <%}%>">
+                                                                    <div class="td firstColumn <% if(number%2) { %>viewTdBlack <%}else{%>  tdBlack <%}%>"">
+                                                                        <%= key %>
+                                                                    </div>
+                                                                    <div class="td secondColumn">
+                                                                        <%= data[key] %>
+                                                                    </div>
+                                                                </div>
+                                                                <% number+=1 %>
+                                                                    <% }%>
 
-<body>
-    <div class="case">
-        <%- include('SIdeNavigation'); %>
-            <%- include('kindomview2',{data:data}) ;%>
+
+
+                                                                        <%}%>
+                                                                            <% }%>
+
     </div>
-</body>
-<script src="/public/js/scripts.js"></script>
-
-</html>
+</div>

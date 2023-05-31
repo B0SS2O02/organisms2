@@ -21,17 +21,17 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage: storageConfig, fileFilter: fileFilter })
 
-router.get('/create', Organism.categoryAddGet)
+router.get('/create', Organism.organismAddGet)
 
-router.post('/', upload.single('img'), Organism.categoryAddPost)
+router.post('/', upload.single('img'), Organism.organismAddPost)
 
 router.get('/', Organism.organismList)
 
-router.get('/view/:id', Organism.categoryView)
+router.get('/view/:id', Organism.organismView)
 
-router.get('/edit/:id', Organism.categoryEditGet)
+router.get('/edit/:id', Organism.organismEditGet)
 
-router.post('/edit', upload.single('image'), Organism.categoryEditPut)
+router.post('/edit', upload.single('image'), Organism.organismEditPut)
 
 router.post('/delete/:id', Organism.del)
 

@@ -19,6 +19,7 @@ exports.list = async (req, res) => {
     })
     const lastPage = await models.kindom.count()
     res.render('kindom', {
+        PageType: 'list',
         navlist: navlist,
         list: kindom,
         page: page + 1,
@@ -43,7 +44,8 @@ exports.view = async (req, res) => {
         }]
     })
     let data = JSON.stringify(kindom)
-    res.render('kindomview', {
+    res.render('Kindom', {
+        PageType: 'view',
         navlist: navlist,
         data: JSON.parse(data)
     })
@@ -71,7 +73,8 @@ exports.editView = async (req, res) => {
 
     let data = JSON.stringify(category)
 
-    res.render('kindomEdit', {
+    res.render('Kindom', {
+        PageType:'edit',
         navlist: navlist,
         data: JSON.parse(data),
         link: '/admin/kindom/edit',
@@ -80,7 +83,7 @@ exports.editView = async (req, res) => {
 }
 
 exports.editPost = async (req, res) => {
-    console.log('------------------',req.body)
+    console.log('------------------', req.body)
     let body = {}
     if (!!req.file) {
         body['img'] = req.file.path

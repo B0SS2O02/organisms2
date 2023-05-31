@@ -2,15 +2,29 @@
 
 <head>
     <link rel="stylesheet" href="/public/css/style.css">
-
 </head>
 
 <body>
     <div class="case">
-        <%- include('SIdeNavigation'); %>
-            <%- include('Kindomlist',{list:list})%>
+        <%- include('SideNavigation'); %>
+            <div class="ContentCase">
+                <div class="Header">
+                    Kindom
+                </div>
+                <div class="Content">
+                    <% if(PageType=='list' ){ %>
+                        <%- include('KindomList',{list:list})%>
+                            <% }else if(PageType=='view' ){%>
+                                <%- include('KindomView',{data:data}) ;%>
+                                    <% }else if(PageType=='edit' ){%>
+                                        <%- include('KindomEdit',{data:data,link:link,method:method})%>
+                                            <%}%>
+                </div>
+            </div>
+
     </div>
 </body>
 <script src="/public/js/scripts.js"></script>
+<script src="/public/js/fetch.js"></script>
 
 </html>

@@ -7,6 +7,10 @@ module.exports = {
       img: 'public/image/image.png',
       createdAt: new Date(),
       updatedAt: new Date()
+    },{
+      img: 'public/image/image.png',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }], {});
   },
 

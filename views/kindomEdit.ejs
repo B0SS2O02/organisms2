@@ -1,18 +1,73 @@
-<html>
+<div class="viewContent">
+    <form action="<%= link %>" method="<%= method %>">
+        <div class="table">
 
-<head>
-    <title>Home Page</title>
-    <link rel="stylesheet" href="/public/css/style.css">
+            <% for(let key in data){%>
+                <% if(typeof(data[key])=='object' ){%>
+                    <% for(let i=0;i< data[key].length;i++){%>
+                        <% for(const d in data[key][i]){%>
+                            <% if(d!='id' && d!='language' && d!='lang' ){%>
+                                <div class="tr">
+                                    <div class="td firstColumn">
+                                        <%=data[key][i].language.title %>
+                                            <%= d %>
+                                    </div>
+                                    <div class="td">
 
-</head>
+                                        <%if(d=='title'){%>
+                                            <input type="text"
+                                                name="<%=data[key][i].language.id %>-<%=data[key][i].language.title %>-<%= d %>"
+                                                value="<%= data[key][i][d]%>">
+                                            <%}else{%>
+                                                <textarea
+                                                    name="<%=data[key][i].language.id %>-<%=data[key][i].language.title %>-<%= d %>"><%= data[key][i][d]%></textarea>
+                                                <% }%>
 
-<body>
-    <div class="case">
-        <%- include('SIdeNavigation'); %>
-            <%- include('Kindomedit2',{data:data,link:link,method:method}) ;%>
-    </div>
-</body>
-<script src="/public/js/scripts.js"></script>
-<script src="/public//js/fetch.js"></script>
+                                    </div>
+                                </div>
+                                <% }%>
+                                    <% }%>
 
-</html>
+                                        <% }%>
+                                            <% }else{%>
+                                                <% if(key=='img' ){%>
+                                                    <div class="tr ">
+                                                        <div class="td firstColumn">
+                                                            Image
+                                                        </div>
+                                                        <div class="td">
+                                                            <img class="viewimage" src="/<%= data[key] %>">
+                                                            <input type="file" hidden name="image"
+                                                                accept=".png,.jpg,.jpeg,.gif">
+                                                        </div>
+                                                    </div>
+                                                    <% }else{%>
+                                                        <div class="tr">
+                                                            <div class="td firstColumn">
+                                                                <%= key %>
+                                                            </div>
+                                                            <div class="td">
+                                                                <%= data[key] %>
+                                                                    <input name="<%= key %>" type="text" hidden
+                                                                        value="<%= data[key] %>">
+                                                            </div>
+                                                        </div>
+                                                        <% }%>
+
+
+
+                                                            <%}%>
+                                                                <% }%>
+                                                                    
+
+                                                                    <div onclick="submit()" style="margin: 10px;"
+                                                                        class="OptionButton">
+                                                                        Save
+                                                                    </div>
+                                                                    <button id="submitButton" hidden
+                                                                        type="submit">Save</button>
+        </div>
+
+
+    </form>
+</div>
