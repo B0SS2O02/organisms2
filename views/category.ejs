@@ -2,18 +2,32 @@
 
 <head>
     <link rel="stylesheet" href="/public/css/style.css">
-
 </head>
 
 <body>
     <div class="case">
         <%- include('SideNavigation'); %>
-        <div class="Content">
+            <div class="ContentCase">
+                <div class="Header">
+                    Category
+                </div>
+                <div class="Content">
+                    <% if(PageType=='create' ){%>
+                        <%- include('create',{formelements:formelements,link:link,method:method}); %>
+                            <%}else if(PageType=='list' ){ %>
+                                <%- include('Categorylist',{list:list})%>
+                                    <% }else if(PageType=='view' ){%>
+                                        <%- include('view',{data:data}) ;%>
+                                            <% }else if(PageType=='edit' ){%>
+                                                <%-
+                                                    include('Categoryedit',{data:data,link:link,method:method,select:select})%>
+                                                    <%}%>
+                </div>
+            </div>
 
-        </div>
-            
     </div>
 </body>
 <script src="/public/js/scripts.js"></script>
+<script src="/public/js/fetch.js"></script>
 
 </html>

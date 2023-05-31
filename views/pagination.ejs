@@ -1,7 +1,10 @@
 <div class="pagination">
-    <button onclick="paginationBack('<%=page %>')">Back</button>
-    <div>
+    <div class="paginationContent">
+
+    </div>
+    <div class="paginationButton" onclick="paginationBack('<%=page %>')">Back</div>
+    <div class="paginationNumbers">
         <%= page %>/<%=lastPage %>
     </div>
-    <button onclick="paginationNext('<%=page %>','<%= lastPage %>')">Next</button>
+    <div class="paginationButton" onclick="paginationNext('<%=page %>','<%= lastPage %>')">Next</div>
 </div>

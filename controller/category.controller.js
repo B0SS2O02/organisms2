@@ -37,10 +37,10 @@ exports.view = async (req, res) => {
                 attributes: ['id', 'title']
             }
         }, {
-            model: models.kindom,
+            model: models.organism,
             attributes: ['id', 'img'],
             include: [{
-                model: models.kindom_lang,
+                model: models.organism_lang,
                 attributes: ['title'],
                 include: [{
                     model: models.language,

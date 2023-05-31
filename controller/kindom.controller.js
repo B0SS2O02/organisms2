@@ -13,6 +13,9 @@ exports.list = async (req, res) => {
 exports.view = async (req, res) => {
     const kindom = await models.kindom.findOne({
         attributes: ['id', 'img',],
+        where: {
+            id: req.params.id
+        },
         include: [{
             model: models.kindom_lang,
             attributes: ['title', 'body'],
@@ -28,7 +31,7 @@ exports.view = async (req, res) => {
                 attributes: ['title'],
                 include: [{
                     model: models.language,
-                    attributes:['id','title']
+                    attributes: ['id', 'title']
                 }]
             }]
         }]

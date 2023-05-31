@@ -1,56 +1,58 @@
 <div class="viewContent">
-    <h2>Category</h2>
-    <div>
-        <button onclick="edit()">Edit</button>
-        <button onclick="del()">Delete</button>
-    </div>
-    <table>
-        <tbody>
+    
+    <div class="table">
+        <div class="OptionButtonCase">
+            <div class="OptionButton" onclick="edit()">Edit</div>
+            <div class="OptionButton" onclick="del()">Delete</div>
+        </div>
+        <% let number=0 %>
             <% for(let key in data){%>
                 <% if(typeof(data[key])=='object' ){%>
                     <% for(let i=0;i< data[key].length;i++){%>
                         <% for(const d in data[key][i]){%>
                             <% if(d!='id' && d!='language' ){%>
-                                <tr>
-                                    <td>
+                                <div class="tr <% if(number%2) { %>trBlack <%}%>">
+                                    <div class="td firstColumn <% if(number%2) { %>viewTdBlack <%}else{%>  tdBlack <%}%>"">
                                         <%=data[key][i].language.title %>
                                             <%= d %>
-                                    </td>
-                                    <td>
+                                    </div>
+                                    <div class="td secondColumn">
                                         <%= data[key][i][d]%>
-                                    </td>
-                                </tr>
-                                <% }%>
+                                    </div>
+                                </div>
+                                <% number+=1 %>
                                     <% }%>
-
                                         <% }%>
-                                            <% }else{%>
-                                                <% if(key=='img' ){%>
-                                                    <tr>
-                                                        <td>
-                                                            Image
-                                                        </td>
-                                                        <td>
-                                                            <img class="viewimage" src="/<%= data[key] %>">
 
-                                                        </td>
-                                                    </tr>
-                                                    <% }else{%>
-                                                        <tr>
-                                                            <td>
-                                                                <%= key %>
-                                                            </td>
-                                                            <td>
-                                                                <%= data[key] %>
-                                                            </td>
-                                                        </tr>
-                                                        <% }%>
+                                            <% }%>
+                                                <% }else{%>
+                                                    <% if(key=='img' ){%>
+                                                        <div class="tr <% if(number%2) { %>trBlack <%}%>">
+                                                            <div class="td firstColumn <% if(number%2) { %>viewTdBlack <%}else{%>  tdBlack <%}%>"">
+                                                                Image
+                                                            </div>
+                                                            <div class="td secondColumn">
+                                                                <img class="viewimage" src="/<%= data[key] %>">
+
+                                                            </div>
+                                                        </div>
+                                                        <% number+=1 %>
+                                                            <% }else{%>
+                                                                <div class="tr <% if(number%2) { %>trBlack <%}%>">
+                                                                    <div class="td firstColumn <% if(number%2) { %>viewTdBlack <%}else{%>  tdBlack <%}%>"">
+                                                                        <%= key %>
+                                                                    </div>
+                                                                    <div class="td secondColumn">
+                                                                        <%= data[key] %>
+                                                                    </div>
+                                                                </div>
+                                                                <% number+=1 %>
+                                                                    <% }%>
 
 
 
-                                                            <%}%>
-                                                                <% }%>
+                                                                        <%}%>
+                                                                            <% }%>
 
-        </tbody>
-    </table>
+    </div>
 </div>

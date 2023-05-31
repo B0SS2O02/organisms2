@@ -1,17 +1,288 @@
-body{
-     font-family: Verdana, sans-serif;
-     margin: 0;
+body {
+    font-family: Verdana, sans-serif;
+    margin: 0;
 }
-.case{
+
+.case {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-content: flex-start;
     align-items: stretch;
+    width: 100%;
+    height: 100%;
 }
-.navigation{
-    background-color: red;
+
+/* Navigation */
+.navigation {
+    background-color: #333742;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: stretch;
+    color: #c1c2c5;
 }
-.Content{
-    background-color:blue;
+
+.navTitle {
+    background-color: #2a2e38;
+    color: silver;
+    padding: 12px 15;
+    font-size: 25px;
+    height: 31px;
+}
+
+.List {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.ListElement {
+    padding: 10px;
+    background: #3f424b;
+    width: 177px;
+    border-left: 3px solid black;
+    border-bottom: 1px solid black;
+}
+
+.ListElement:hover {
+    border-left: 3px solid navy;
+    background: #454954;
+}
+
+/* ----------- */
+.ContentCase {
+    background-color: #d0cae4;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.Header {
+    background-color: #333742;
+    font-size: 21px;
+    height: 30px;
+    padding: 14px 15;
+    color: silver;
+}
+
+.Content {
+    width: 100%;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+/* List  */
+.ListImage {
+    width: 100%;
+    height: auto;
+}
+
+.CreateButton {
+    background: navy;
+    color: silver;
+    width: 56px;
+    height: 22px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 3px;
+    cursor: default;
+}
+
+.CreateButton:hover {
+    background: #171791;
+}
+
+.CreateButtonCase {
+    width: 675px;
+    margin: 10px;
+}
+
+.ListContent {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-evenly;
+
+}
+
+.table {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: center;
+    justify-content: flex-start;
+
+
+}
+
+.th {
+    font: bold;
+    padding: 10px;
+}
+
+.tr {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    background-color: rgb(216, 216, 216);
+    width: 675px;
+}
+
+.trBlack {
+    background-color: rgb(133, 133, 133);
+    ;
+}
+
+.tdBlack {
+    background-color: rgb(179, 179, 179);
+    ;
+}
+
+.tdtrBlack {
+    background-color: rgb(156, 156, 156);
+    ;
+}
+
+.trHead {
+    background-color: #2a2a2a;
+    color: silver;
+}
+
+.td {
+    padding: 10px;
+}
+
+.tdWhite {
+    background-color: #e5e1db;
+}
+
+.id {
+    width: 15px;
+}
+
+.image {
+    width: 200px;
+}
+
+.title {
+    width: 130px;
+}
+
+.body {
+    width: 250px;
+}
+
+/* ------------- */
+
+/* Pagination */
+.pagination {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 0 30px 0;
+}
+
+.paginationButton {
+    width: 50px;
+    height: 20px;
+    background: #08102c;
+    text-align: center;
+    padding: 7px;
+    border-radius: 1px;
+    color: #dbd6d6;
+    cursor: default;
+}
+
+.paginationButton:hover {
+    background: #2a3a74;
+}
+
+.paginationNumbers {
+    cursor: default;
+    width: 50px;
+    text-align: center;
+    padding: 6px;
+    background: #08102c;
+    color: #cdd6d6;
+}
+
+/* View */
+
+.viewimage {
+    width: 200px;
+}
+
+.firstColumn {
+    width: 200px;
+}
+
+.viewTdBlack {
+    background: #5c5c5c;
+}
+
+
+.OptionButton {
+    background: navy;
+    color: silver;
+    width: 56px;
+    height: 22px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 3px;
+    cursor: default;
+    margin: 0 10 0 0;
+}
+
+.OptionButton:hover {
+    background: #171791;
+}
+
+.OptionButtonCase {
+    width: 675px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+/* ------- */
+
+/* Create */
+
+.creatForm {
+    padding: 20px;
+}
+
+.formContent {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+/* --------- */
+
+textarea{
+    font-family: Verdana, sans-serif;
 }

@@ -128,6 +128,11 @@ const del = async () => {
     }
 }
 
-const MainPage=()=>{
-    document.location.pathname='/admin'
+const MainPage = () => {
+    document.location.pathname = '/admin'
+}
+
+const submit = () => {
+    const form = document.querySelector('#submitButton')
+    form.click()
 }

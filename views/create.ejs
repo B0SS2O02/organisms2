@@ -1,5 +1,4 @@
 <div class="creatForm">
-    <h2>Category</h2>
     <form action="<%= link %>" method="<%= method %>">
         <div class="formContent">
 
@@ -7,22 +6,37 @@
             <% for(let i=0;i< formelements.length;i++ ){%>
                 <% if (formelements[i].type=="textarea" ){ %>
 
-                    <div class="formElement">
-                        <%= formelements[i].title %>
+                    <div class="tr">
+                        <div class="td firstColumn">
+                            <%= formelements[i].title %>
+                        </div>
+                        <div class="td">
                             <textarea class="elements" required name="<%= formelements[i].name %>" id="" cols="30"
                                 rows="10"></textarea>
+                        </div>
+
+
                     </div>
 
                     <% }else if(formelements[i].type=="file" ){ %>
-                        <div class="formElement">
-                            <%= formelements[i].title %>
+                        <div class="tr">
+                            <div class="td firstColumn">
+                                <%= formelements[i].title %>
+                            </div>
+                            <div class="td">
                                 <input class="elements" accept=".png,.jpg,.jpeg,.gif" required
                                     name="<%= formelements[i].name %>" type='<%= formelements[i].type %>' />
+
+                            </div>
+
                         </div>
                         <%} else if(formelements[i].type=="select" ) {%>
-                            <div class="formElement">
-                                <%= formelements[i].title %>
-                                    <select required     class="elements" name="<%= formelements[i].name %>">
+                            <div class="tr">
+                                <div class="td firstColumn">
+                                    <%= formelements[i].title %>
+                                </div>
+                                <div class="td">
+                                    <select required class="elements" name="<%= formelements[i].name %>">
                                         <option selected="selected"></option>
                                         <% for(let j=0;j< formelements[i].options.length;j++){ %>
                                             <option value="<%= formelements[i].options[j].id %>">
@@ -30,17 +44,28 @@
                                             </option>
                                             <%}%>
                                     </select>
+                                </div>
+
+
                             </div>
                             <% }else{ %>
-                                <div class="formElement">
-                                    <%= formelements[i].title %>
+                                <div class="tr">
+                                    <div class="td firstColumn">
+                                        <%= formelements[i].title %>
+                                    </div>
+                                    <div class="td">
                                         <input class="elements" required name="<%= formelements[i].name %>"
                                             type='<%= formelements[i].type %>' />
+                                    </div>
+
+
                                 </div>
 
                                 <% }} %>
-
-                                    <button type="submit">Send</button>
+                                    <div onclick="submit()" style="margin: 10px;" class="OptionButton">
+                                        Send
+                                    </div>
+                                    <button type="submit" hidden id="submitButton">Send</button>
         </div>
         </from>
 </div>

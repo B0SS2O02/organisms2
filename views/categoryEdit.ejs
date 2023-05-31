@@ -1,88 +1,93 @@
 <div class="viewContent">
-    <h2>Category</h2>
     <form action="<%= link %>" method="<%= method %>">
-        <table>
-            <tbody>
-                <% for(let key in data){%>
-                    <% if(typeof(data[key])=='object' ){%>
-                        <% for(let i=0;i< data[key].length;i++){%>
-                            <% for(const d in data[key][i]){%>
-                                <% if(d!='id' && d!='language' && d!='lang' ){%>
-                                    <tr>
-                                        <td>
-                                            <%=data[key][i].language.title %>
-                                                <%= d %>
-                                        </td>
-                                        <td>
-                                        
-                                            <%if(d=='title'){%>
-                                                <input type="text"
-                                                    name="<%=data[key][i].language.id %>-<%=data[key][i].language.title %>-<%= d %>"
-                                                    value="<%= data[key][i][d]%>">
-                                                <%}else{%>
-                                                    <textarea
-                                                        name="<%=data[key][i].language.id %>-<%=data[key][i].language.title %>-<%= d %>"><%= data[key][i][d]%></textarea>
-                                                    <% }%>
+        <div class="table">
 
-                                        </td>
-                                    </tr>
+            <% for(let key in data){%>
+                <% if(typeof(data[key])=='object' ){%>
+                    <% for(let i=0;i< data[key].length;i++){%>
+                        <% for(const d in data[key][i]){%>
+                            <% if(d!='id' && d!='language' && d!='lang' ){%>
+                                <div class="tr">
+                                    <div class="td firstColumn">
+                                        <%=data[key][i].language.title %>
+                                            <%= d %>
+                                    </div>
+                                    <div class="td">
+
+                                        <%if(d=='title'){%>
+                                            <input type="text"
+                                                name="<%=data[key][i].language.id %>-<%=data[key][i].language.title %>-<%= d %>"
+                                                value="<%= data[key][i][d]%>">
+                                            <%}else{%>
+                                                <textarea
+                                                    name="<%=data[key][i].language.id %>-<%=data[key][i].language.title %>-<%= d %>"><%= data[key][i][d]%></textarea>
+                                                <% }%>
+
+                                    </div>
+                                </div>
+                                <% }%>
                                     <% }%>
+
                                         <% }%>
-
-                                            <% }%>
-                                                <% }else{%>
-                                                    <% if(key=='img' ){%>
-                                                        <tr>
-                                                            <td>
-                                                                Image
-                                                            </td>
-                                                            <td>
-                                                                <img class="viewimage" src="/<%= data[key] %>">
-                                                                <input type="file" hidden name="image" accept=".png,.jpg,.jpeg,.gif">
-                                                            </td>
-                                                        </tr>
-                                                        <% }else{%>
-                                                            <tr>
-                                                                <td>
-                                                                    <%= key %>
-                                                                </td>
-                                                                <td>
-                                                                    <%= data[key] %>
-                                                                        <input name="<%= key %>" type="text" hidden
-                                                                            value="<%= data[key] %>">
-                                                                </td>
-                                                            </tr>
-                                                            <% }%>
-
+                                            <% }else{%>
+                                                <% if(key=='img' ){%>
+                                                    <div class="tr ">
+                                                        <div class="td firstColumn">
+                                                            Image
+                                                        </div>
+                                                        <div class="td">
+                                                            <img class="viewimage" src="/<%= data[key] %>">
+                                                            <input type="file" hidden name="image"
+                                                                accept=".png,.jpg,.jpeg,.gif">
+                                                        </div>
+                                                    </div>
+                                                    <% }else{%>
+                                                        <div class="tr">
+                                                            <div class="td firstColumn">
+                                                                <%= key %>
+                                                            </div>
+                                                            <div class="td">
+                                                                <%= data[key] %>
+                                                                    <input name="<%= key %>" type="text" hidden
+                                                                        value="<%= data[key] %>">
+                                                            </div>
+                                                        </div>
+                                                        <% }%>
 
 
-                                                                <%}%>
-                                                                    <% }%>
-                                                                        <tr>
-                                                                            <td>
-                                                                                Kindom
-                                                                            </td>
-                                                                            <td>
-                                                                                <select name="kindom">
-                                                                                    <%for(let i=0;i< select.length; i++){%>
-                                                                                        <option 
-                                                                                        
-                                                                                        <%= select[i].id %>
-                                                                                    
-                                                                                        <% if(data.kindom.kindom_langs[0].title == select[i].kindom_langs[0].title) {%>
+
+                                                            <%}%>
+                                                                <% }%>
+                                                                    <div class="tr">
+                                                                        <div class="td firstColumn">
+                                                                            Kindom
+                                                                        </div>
+                                                                        <div class="td">
+                                                                            <select name="kindom">
+                                                                                <%for(let i=0;i< select.length; i++){%>
+                                                                                    <option <%=select[i].id %>
+
+                                                                                        <% if(data.kindom.kindom_langs[0].title==select[i].kindom_langs[0].title)
+                                                                                            {%>
                                                                                             selected
-                                                                                            <%}%> 
-                                                                                        value="<%=select[i].id%>">
+                                                                                            <%}%>
+                                                                                                value="<%=select[i].id%>
+                                                                                                    ">
                                                                                                     <%=select[i].kindom_langs[0].title%>
-                                                                                        </option>
-                                                                                        <%}%>
-                                                                                </select>
-                                                                            </td>
-                                                                        </tr>
-            </tbody>
-        </table>
+                                                                                    </option>
+                                                                                    <%}%>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div onclick="submit()" style="margin: 10px;"
+                                                                        class="OptionButton">
+                                                                        Save
+                                                                    </div>
+                                                                    <button id="submitButton" hidden
+                                                                        type="submit">Save</button>
+        </div>
 
 
-        <button type="submit">Save</button>
     </form>
 </div>
