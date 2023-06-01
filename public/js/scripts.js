@@ -1,7 +1,7 @@
 const redirect = (url) => {
-   
+
     document.location.pathname = url
-    
+
 }
 
 const pathBack = () => {
@@ -14,19 +14,7 @@ const pathBack = () => {
     }
     redirect(newPath)
 }
-// const send = () => {
-//     const form = document.getElementById('form')
-//     const inputs = form.getElementsByClassName('elements')
-//     console.log(inputs)
-//     const formData = new FormData()
-//     for (const index in inputs) {
-//         if (!Number.isInteger(inputs[index].name) && inputs[index].name != undefined && inputs[index].name != 'item' && inputs[index].name != 'namedItem') {
-//             formData.append(inputs[index].name,inputs[index].name)
-//         }
 
-//     }
-//     console.log(formData)
-// }
 
 const create = () => {
     document.location.pathname = (`${document.location.pathname}/create`)
@@ -47,6 +35,12 @@ const paginationBack = (page) => {
     if (page - 1 >= 1) {
         document.location.search = `?page=${page - 1}`
     }
+}
+
+const paginationPage = (page) => {
+    page = parseInt(page)
+    document.location.search = `?page=${page}`
+
 }
 
 const Link = (id) => {

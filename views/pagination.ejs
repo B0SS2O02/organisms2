@@ -1,10 +1,28 @@
 <div class="pagination">
-    <div class="paginationContent">
+    <%if(page>4){%>
+        <div class="paginationButton" onclick="paginationPage(1)">1</div>
+        <%}%>
 
-    </div>
-    <div class="paginationButton" onclick="paginationBack('<%=page %>')">Back</div>
-    <div class="paginationNumbers">
+
+            <%const number=5%>
+                <% for(let i=1;i<=lastPage;i++){%>
+
+                    <%if(i>=1 && i>=page-3 && i<=page+3 && i<=lastPage ){%>
+
+                            <div class="paginationNumbers" onclick="paginationPage('<%= i %>')">
+                                <%= i %>
+                            </div>
+                            <%}%>
+
+
+                                <%}%>
+                                    <!-- <div class="paginationNumbers">
         <%= page %>/<%=lastPage %>
-    </div>
-    <div class="paginationButton" onclick="paginationNext('<%=page %>','<%= lastPage %>')">Next</div>
+    </div> -->
+                                    <% if(lastPage-4>page){%>
+                                        <div class="paginationButton" onclick="paginationPage('<%=lastPage %>')">
+                                            <%=lastPage %>
+                                        </div>
+                                        <%}%>
+
 </div>
